@@ -1,0 +1,67 @@
+```json
+{
+  "name": "ai-powered-content-summarizer",
+  "version": "1.0.0",
+  "description": "An application that takes a long piece of text or a URL and generates a concise summary using natural language processing, potentially offering different summary lengths. Part of a larger microservice ecosystem.",
+  "main": "server/index.js",
+  "private": true,
+  "scripts": {
+    "start": "node server/index.js",
+    "server": "cross-env NODE_ENV=development nodemon server/index.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "cd client && npm run build",
+    "lint": "eslint . --ext .js --fix",
+    "format": "prettier --write .",
+    "test": "echo \"No tests specified yet for the root project.\" && exit 0",
+    "postinstall": "echo 'Installing client dependencies...' && cd client && npm install"
+  },
+  "keywords": [
+    "ai",
+    "nlp",
+    "summarizer",
+    "react",
+    "nodejs",
+    "python",
+    "microservices"
+  ],
+  "author": "Your Name/Organization",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "nodemon": "^3.1.0",
+    "prettier": "^3.2.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/ai-powered-content-summarizer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/ai-powered-content-summarizer/issues"
+  },
+  "homepage": "https://github.com/your-org/ai-powered-content-summarizer#readme",
+  "config": {
+    "apiGatewayUrl": "http://localhost:8000",
+    "authServiceUrl": "http://localhost:8001",
+    "ecommerceServiceUrl": "http://localhost:8002",
+    "blogServiceUrl": "http://localhost:8003"
+  }
+}
+```

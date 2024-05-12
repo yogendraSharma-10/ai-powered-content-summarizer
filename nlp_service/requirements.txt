@@ -1,0 +1,8 @@
+Flask
+gunicorn
+transformers
+torch
+beautifulsoup4
+requests
+scikit-learn # Often useful for text processing, even if not directly for deep learning summarization, for things like text splitting or basic metrics.
+python-dotenv # For local development environment variables.
