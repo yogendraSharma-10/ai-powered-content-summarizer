@@ -1,0 +1,94 @@
+# Git Ignore for AI-Powered Content Summarizer
+
+# Node.js (Client and Server)
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Production
+build/
+dist/
+tmp/
+
+# Misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.next/ # If Next.js were used, but good to include for completeness
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# pnpm-debug.log*
+# .npm/
+# .yarn/
+
+# Editor directories and files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+.history/
+
+# Python (NLP Service)
+# Byte-code files
+*.pyc
+*.pyo
+__pycache__/
+
+# Distribution / packaging
+.Python
+env/
+venv/
+*.egg-info/
+.tox/
+.coverage
+.pytest_cache/
+.mypy_cache/
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# Environment variables
+.env
+.flaskenv
+
+# Docker
+# Ignore Docker-related files that are generated or sensitive
+.dockerignore # This file itself is usually versioned, but if it were generated, it would be ignored.
+# For now, assuming .dockerignore is versioned.
+# If Docker volumes are used for logs or data, those paths might be ignored here if they appear outside the volume.
+# Example:
+# data/
+# logs/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# CI/CD
+# GitHub Actions workflow files are typically versioned, but if any generated files
+# from CI/CD runs were to appear in the repo, they'd be ignored here.
+# For example, build artifacts if they were accidentally committed.
+# .github/workflows/*.yml # This should NOT be ignored, it's part of the repo.
+
+# General
+# Any other temporary or generated files
+*.tmp
+*.bak
+*.swp
+*~
+.#*
+.#*.*
