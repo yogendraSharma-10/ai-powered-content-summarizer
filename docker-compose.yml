@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  # Frontend service for the React application
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      # Point the React app to the Node.js backend
+      REACT_APP_API_BASE_URL: http://localhost:8080
+      # Example of referencing another service, if the client needed to interact directly
+      # REACT_APP_COLLAB_EDITOR_URL: http://localhost:3001 # Placeholder for a collaborative editor service
+    volumes:
+      - ./client:/app
+      - /app/node_modules # Exclude node_modules from host bind mount to prevent issues
+    depends_on:
+      - server
+    # Command to run the React development server
+    command: npm start
+
+  # Backend service for the Node.js API
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      # Port for the Node.js server
+      PORT: 8080
+      # URL for the NLP service
+      NLP_SERVICE_URL: http://nlp_service:5000
+      # Example of referencing other services for potential inter-service communication
+      # RECIPE_PLANNER_API_URL: http://recipe_planner:8081/api # Placeholder for Recipe & Meal Planner API
+      # BLOG_PLATFORM_API_URL: http://blog_platform:8082/api # Placeholder for Full-Stack Blog Platform API
+    volumes:
+      - ./server:/app
+      - /app/node_modules # Exclude node_modules from host bind mount
+    depends_on:
+      - nlp_service
+    # Command to start the Node.js server
+    command: npm start
+
+  # NLP (Natural Language Processing) service using Python Flask
+  nlp_service:
+    build:
+      context: ./nlp_service
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      # Port for the Flask NLP service
+      FLASK_RUN_PORT: 5000
+      # Example of a potential API key for an external NLP model, if used
+      # OPENAI_API_KEY: ${OPENAI_API_KEY} # Assuming this would be set in a .env file
+    volumes:
+      - ./nlp_service:/app
+    # Command to run the Flask application
+    command: python app.py
+
+# Define networks for inter-service communication
+networks:
+  default:
+    driver: bridge
